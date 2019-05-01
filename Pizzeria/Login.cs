@@ -61,7 +61,10 @@ namespace Pizzeria
                 {
                     MyGlobals.Usuario = textBox1.Text.ToString();
                     MyGlobals.Contrasena = textBox2.Text.ToString();
-                    MessageBox.Show(MyGlobals.Usuario);
+                    //MessageBox.Show(MyGlobals.Usuario);
+                    var menu = new Menu();
+                    menu.Show();
+                    this.Hide();
                 }
                 else
                     MessageBox.Show("usuario o contraseña erronea");

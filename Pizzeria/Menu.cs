@@ -16,5 +16,12 @@ namespace Pizzeria
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var comprarpizzanormal = new ComprarPizzaNormal();
+            comprarpizzanormal.Show(this);
+            this.Hide();
+        }
     }
 }
