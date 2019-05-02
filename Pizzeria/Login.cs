@@ -33,14 +33,19 @@ namespace Pizzeria
             MyGlobals.con.Open();
 
             //string q = "exec @return_value = [dbo].[Agregar_usuario] @nombre = N'"+textBox1.ToString()+ "', @correo = N'"+textBox1.ToString()+"'";
-            string q = "exec [dbo].[Agregar_usuario] @nombre = N'" + textBox1.Text.ToString() + "', @correo = N'" + textBox2.Text.ToString() + "',@contrasena = N'"+ textBox2.Text.ToString() + "'";
-            SqlCommand cmd = new SqlCommand(q, MyGlobals.con);
-            cmd.ExecuteNonQuery();
+            //string q = "exec [dbo].[Agregar_usuario] @nombre = N'" + textBox1.Text.ToString() + "', @correo = N'" + textBox2.Text.ToString() + "',@contrasena = N'"+ textBox2.Text.ToString() + "'";
+            SqlCommand cmd = new SqlCommand("Agregar_usuario", MyGlobals.con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@nombre", textBox1.Text.ToString());
+            cmd.Parameters.AddWithValue("@correo", textBox2.Text.ToString());
+            MyGlobals.rdr = cmd.ExecuteReader();
+            //cmd.ExecuteNonQuery();
             MyGlobals.con.Close();
                     }
             catch (SqlException sqlex)
             {
                 MessageBox.Show(sqlex.Message);
+                MyGlobals.con.Close();
             }
 }
 
@@ -51,8 +56,23 @@ namespace Pizzeria
                 //SqlConnection con = new SqlConnection(MyGlobals.conString);
                 MyGlobals.con.Open();
 
-                string q = "exec [dbo].[Login] @user = N'" + textBox1.Text.ToString() + "',@password = N'" + textBox2.Text.ToString() + "'";
-                SqlCommand cmd = new SqlCommand(q, MyGlobals.con);
+                //string q = "exec [dbo].[Login] @user = N'" + textBox1.Text.ToString() + "',@password = N'" + textBox2.Text.ToString() + "'";
+                //SqlCommand cmd = new SqlCommand(q, MyGlobals.con);
+
+
+                SqlCommand cmd = new SqlCommand("Login", MyGlobals.con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@user", textBox1.Text.ToString());
+                cmd.Parameters.AddWithValue("@password", textBox2.Text.ToString());
+                cmd.Parameters.AddWithValue("@output", SqlDbType.Int);
+                MyGlobals.rdr = cmd.ExecuteReader();
+                //MyGlobals.rdr.Close();
+                //int returnValue = (int)MyGlobals.rdr.Parameters["@output"].Value;
+
+                //int test1 = (int)MyGlobals.rdr[0];
+                //string test = MyGlobals.rdr[0].ToString();
+                //MyGlobals.rdr.GetFieldValue(0);
+
                 int a = 0;
                 a = cmd.ExecuteNonQuery(); //ejecuta un comando, pero no retorna nada
                 a = (int)cmd.ExecuteScalar(); //ejecuta un comando y devuelve una fila

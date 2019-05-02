@@ -131,6 +131,7 @@ namespace Pizzeria
         public static int orden = 0;
         public static string conString = "Data Source=DESKTOP-6CG1JKA\\ANDREI;Initial Catalog=tarea;Integrated Security=True";
         public static SqlConnection con = new SqlConnection(MyGlobals.conString);
+        public static SqlDataReader rdr = null;
     }
     class Programa
     {
