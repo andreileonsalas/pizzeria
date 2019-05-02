@@ -127,6 +127,10 @@ namespace Pizzeria
     {
         public static string Usuario = "Hello";
         public static string Contrasena = "World";
+        public static int pizza = 0;
+        public static int orden = 0;
+        public static string conString = "Data Source=DESKTOP-6CG1JKA\\ANDREI;Initial Catalog=tarea;Integrated Security=True";
+        public static SqlConnection con = new SqlConnection(MyGlobals.conString);
     }
     class Programa
     {

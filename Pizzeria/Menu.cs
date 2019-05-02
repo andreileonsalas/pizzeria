@@ -22,6 +22,7 @@ namespace Pizzeria
             var comprarpizzanormal = new ComprarPizzaNormal();
             comprarpizzanormal.Show(this);
             this.Hide();
+            
         }
     }
 }
