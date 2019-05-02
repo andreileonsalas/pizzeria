@@ -31,7 +31,7 @@ namespace Pizzeria
             {
             
             MyGlobals.con.Open();
-
+//
             //string q = "exec @return_value = [dbo].[Agregar_usuario] @nombre = N'"+textBox1.ToString()+ "', @correo = N'"+textBox1.ToString()+"'";
             //string q = "exec [dbo].[Agregar_usuario] @nombre = N'" + textBox1.Text.ToString() + "', @correo = N'" + textBox2.Text.ToString() + "',@contrasena = N'"+ textBox2.Text.ToString() + "'";
             SqlCommand cmd = new SqlCommand("Agregar_usuario", MyGlobals.con);
